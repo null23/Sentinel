@@ -2,21 +2,20 @@ package com.alibaba.csp.sentinel.dashboard.rule.nacos;
 
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.DegradeRuleEntity;
 import com.alibaba.csp.sentinel.dashboard.rule.DynamicRuleProvider;
-import com.alibaba.csp.sentinel.dashboard.rule.nacos.NacosConfigUtil;
 import com.alibaba.csp.sentinel.datasource.Converter;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 @Component("degradeFlowRuleNacosProvider")
 public class DegradeFlowRuleNacosProvider implements DynamicRuleProvider<List<DegradeRuleEntity>> {
 
-  @Autowired
+  @Resource
   private ConfigService configService;
-  @Autowired
+  @Resource
   private Converter<String, List<DegradeRuleEntity>> converter;
 
   @Override

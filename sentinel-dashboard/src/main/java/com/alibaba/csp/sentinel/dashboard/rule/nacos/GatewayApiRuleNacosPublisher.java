@@ -22,7 +22,7 @@ import com.alibaba.csp.sentinel.util.AssertUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.ConfigType;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,20 +30,21 @@ import org.springframework.stereotype.Component;
  * @since 1.4.0
  */
 @Component("gatewayApiRuleNacosPublisher")
-public class GatewayApiRuleNacosPublisher implements DynamicRulePublisher<List<ApiDefinitionEntity>> {
+public class GatewayApiRuleNacosPublisher implements
+    DynamicRulePublisher<List<ApiDefinitionEntity>> {
 
-    @Autowired
-    private ConfigService configService;
-    @Autowired
-    private Converter<List<ApiDefinitionEntity>, String> converter;
+  @Resource
+  private ConfigService configService;
+  @Resource
+  private Converter<List<ApiDefinitionEntity>, String> converter;
 
-    @Override
-    public void publish(String app, List<ApiDefinitionEntity> rules) throws Exception {
-        AssertUtil.notEmpty(app, "app name cannot be empty");
-        if (rules == null) {
-            return;
-        }
-        configService.publishConfig(app + NacosConfigUtil.GATEWAY_API_DATA_ID_POSTFIX,
-                NacosConfigUtil.GROUP_ID, converter.convert(rules), ConfigType.JSON.getType());
+  @Override
+  public void publish(String app, List<ApiDefinitionEntity> rules) throws Exception {
+    AssertUtil.notEmpty(app, "app name cannot be empty");
+    if (rules == null) {
+      return;
     }
+    configService.publishConfig(app + NacosConfigUtil.GATEWAY_API_DATA_ID_POSTFIX,
+        NacosConfigUtil.GROUP_ID, converter.convert(rules), ConfigType.JSON.getType());
+  }
 }

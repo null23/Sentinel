@@ -22,7 +22,7 @@ import com.alibaba.csp.sentinel.util.AssertUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.ConfigType;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,20 +30,21 @@ import org.springframework.stereotype.Component;
  * @since 1.4.0
  */
 @Component("paramFlowRuleNacosPublisher")
-public class ParamFlowRuleNacosPublisher implements DynamicRulePublisher<List<ParamFlowRuleEntity>> {
+public class ParamFlowRuleNacosPublisher implements
+    DynamicRulePublisher<List<ParamFlowRuleEntity>> {
 
-    @Autowired
-    private ConfigService configService;
-    @Autowired
-    private Converter<List<ParamFlowRuleEntity>, String> converter;
+  @Resource
+  private ConfigService configService;
+  @Resource
+  private Converter<List<ParamFlowRuleEntity>, String> converter;
 
-    @Override
-    public void publish(String app, List<ParamFlowRuleEntity> rules) throws Exception {
-        AssertUtil.notEmpty(app, "app name cannot be empty");
-        if (rules == null) {
-            return;
-        }
-        configService.publishConfig(app + NacosConfigUtil.PARAM_FLOW_DATA_ID_POSTFIX,
-            NacosConfigUtil.GROUP_ID, converter.convert(rules), ConfigType.JSON.getType());
+  @Override
+  public void publish(String app, List<ParamFlowRuleEntity> rules) throws Exception {
+    AssertUtil.notEmpty(app, "app name cannot be empty");
+    if (rules == null) {
+      return;
     }
+    configService.publishConfig(app + NacosConfigUtil.PARAM_FLOW_DATA_ID_POSTFIX,
+        NacosConfigUtil.GROUP_ID, converter.convert(rules), ConfigType.JSON.getType());
+  }
 }

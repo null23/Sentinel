@@ -23,7 +23,6 @@ import com.alibaba.nacos.api.config.ConfigService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -33,18 +32,18 @@ import org.springframework.stereotype.Component;
 @Component("paramFlowRuleNacosProvider")
 public class ParamFlowRuleNacosProvider implements DynamicRuleProvider<List<ParamFlowRuleEntity>> {
 
-    @Resource
-    private ConfigService configService;
-    @Resource
-    private Converter<String, List<ParamFlowRuleEntity>> converter;
+  @Resource
+  private ConfigService configService;
+  @Resource
+  private Converter<String, List<ParamFlowRuleEntity>> converter;
 
-    @Override
-    public List<ParamFlowRuleEntity> getRules(String appName) throws Exception {
-        String rules = configService.getConfig(appName + NacosConfigUtil.PARAM_FLOW_DATA_ID_POSTFIX,
-            NacosConfigUtil.GROUP_ID, 3000);
-        if (StringUtil.isEmpty(rules)) {
-            return new ArrayList<>();
-        }
-        return converter.convert(rules);
+  @Override
+  public List<ParamFlowRuleEntity> getRules(String appName) throws Exception {
+    String rules = configService.getConfig(appName + NacosConfigUtil.PARAM_FLOW_DATA_ID_POSTFIX,
+        NacosConfigUtil.GROUP_ID, 3000);
+    if (StringUtil.isEmpty(rules)) {
+      return new ArrayList<>();
     }
+    return converter.convert(rules);
+  }
 }
