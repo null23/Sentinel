@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.alibaba.csp.sentinel.dashboard.rule;
+package com.alibaba.csp.sentinel.dashboard.rule.nacos;
 
 /**
  * @author Eric Zhao
@@ -30,6 +30,13 @@ public final class NacosConfigUtil {
    * 新增一个熔断规则 POSTFIX
    */
   public static final String DEGRADE_FLOW_DATA_ID_POSTFIX = "-degrade-rules.json";
+
+  public static final String PARAM_FLOW_DATA_ID_POSTFIX = "-param-flow-rules.json";
+  public static final String GATEWAY_API_DATA_ID_POSTFIX = "-gateway-api-rules.json";
+  public static final String GATEWAY_FLOW_DATA_ID_POSTFIX = "-gateway-flow-rules.json";
+  public static final String SYSTEM_DATA_ID_POSTFIX = "-system-rules.json";
+  public static final String AUTHORITY_DATA_ID_POSTFIX = "-authority-rules.json";
+  public static final String CLUSTER_MAP_DATA_ID_POSTFIX = "-cluster-map";
 
   private NacosConfigUtil() {
   }

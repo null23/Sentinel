@@ -1,6 +1,8 @@
-package com.alibaba.csp.sentinel.dashboard.rule;
+package com.alibaba.csp.sentinel.dashboard.rule.nacos;
 
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.DegradeRuleEntity;
+import com.alibaba.csp.sentinel.dashboard.rule.DynamicRuleProvider;
+import com.alibaba.csp.sentinel.dashboard.rule.nacos.NacosConfigUtil;
 import com.alibaba.csp.sentinel.datasource.Converter;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.alibaba.nacos.api.config.ConfigService;

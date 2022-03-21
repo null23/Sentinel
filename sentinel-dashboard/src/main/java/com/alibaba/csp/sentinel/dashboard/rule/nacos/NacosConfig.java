@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.alibaba.csp.sentinel.dashboard.rule;
+package com.alibaba.csp.sentinel.dashboard.rule.nacos;
 
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.DegradeRuleEntity;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.FlowRuleEntity;
