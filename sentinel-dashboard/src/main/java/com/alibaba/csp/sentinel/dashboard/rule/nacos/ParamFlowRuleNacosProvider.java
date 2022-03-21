@@ -22,6 +22,7 @@ import com.alibaba.csp.sentinel.util.StringUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,9 +33,9 @@ import org.springframework.stereotype.Component;
 @Component("paramFlowRuleNacosProvider")
 public class ParamFlowRuleNacosProvider implements DynamicRuleProvider<List<ParamFlowRuleEntity>> {
 
-    @Autowired
+    @Resource
     private ConfigService configService;
-    @Autowired
+    @Resource
     private Converter<String, List<ParamFlowRuleEntity>> converter;
 
     @Override
