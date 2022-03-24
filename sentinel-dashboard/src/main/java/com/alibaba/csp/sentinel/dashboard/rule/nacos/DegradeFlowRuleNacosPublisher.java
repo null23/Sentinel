@@ -26,6 +26,6 @@ public class DegradeFlowRuleNacosPublisher implements
       return;
     }
     configService.publishConfig(app + NacosConfigUtil.DEGRADE_FLOW_DATA_ID_POSTFIX,
-        NacosConfigUtil.GROUP_ID, converter.convert(rules), ConfigType.JSON.getType());
+        NacosConfigUtil.GROUP_ID, converter.convert(rules));
   }
 }
