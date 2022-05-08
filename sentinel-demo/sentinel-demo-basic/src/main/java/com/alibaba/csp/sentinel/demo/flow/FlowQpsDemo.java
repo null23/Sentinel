@@ -137,6 +137,7 @@ public class FlowQpsDemo {
 
                 try {
                     entry = SphU.entry(KEY);
+//                    entry = SphU.entry("asasd");
                     // token acquired, means pass
                     pass.addAndGet(1);
                 } catch (BlockException e1) {
